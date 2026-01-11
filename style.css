@@ -1,0 +1,90 @@
+:root{
+  --card: rgba(255,255,255,.06);
+  --card2: rgba(255,255,255,.08);
+  --stroke: rgba(255,255,255,.12);
+}
+
+*{ box-sizing:border-box; }
+
+.card{
+  background: linear-gradient(180deg, var(--card2), var(--card));
+  border: 1px solid var(--stroke);
+  border-radius: 16px;
+  padding: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.btn{
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.06);
+  color: white;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1;
+  transition: transform .08s ease, background .2s ease;
+  user-select: none;
+}
+.btn:active{ transform: translateY(1px) scale(.99); }
+.btn:hover{ background: rgba(255,255,255,.10); }
+.btn-primary{ background: rgba(59,130,246,.35); border-color: rgba(59,130,246,.55); }
+.btn-primary:hover{ background: rgba(59,130,246,.45); }
+
+.panel{
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 14px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.label{ font-size: 10px; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: 0.5px; }
+.value{ font-size: 16px; font-weight: 800; margin-top: 1px; color: #fff; }
+
+.tag{
+  display: inline-block;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.06);
+  margin-right: 6px;
+}
+
+canvas{
+  border-radius: 14px;
+  background: radial-gradient(1200px 400px at 40% 10%, rgba(59,130,246,.18), transparent 55%),
+              radial-gradient(800px 400px at 70% 80%, rgba(236,72,153,.12), transparent 55%),
+              rgba(0,0,0,.15);
+  border: 1px solid rgba(255,255,255,.10);
+  touch-action: none; /* pointer events for pan/swipe */
+}
+
+.overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(0,0,0,.55);
+  border-radius: 14px;
+}
+.overlay.hidden{ display:none; }
+
+.overlay-card{
+  width: min(360px, 92%);
+  background: rgba(15,23,42,.92);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 16px;
+  padding: 16px;
+  text-align:center;
+  box-shadow: 0 20px 60px rgba(0,0,0,.4);
+}
+
+@media (min-width: 768px){
+  .btn{ font-size: 13px; }
+  .card{ padding: 14px; }
+}
