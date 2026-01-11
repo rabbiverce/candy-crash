@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Canvas Match-3 (Candy Crush Style)</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="min-h-dvh bg-gradient-to-b from-slate-900 via-slate-950 to-black text-white">
+  <div class="mx-auto max-w-5xl px-3 py-3 md:py-6">
+    <header class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+      <div class="flex items-center justify-between gap-3">
+        <div>
+          <h1 class="text-xl md:text-2xl font-bold tracking-tight">Sweet Saga AAA</h1>
+          <p class="text-xs md:text-sm text-white/70">Canvas Match-3 • Blockers • Sound • Portals</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="btnSound" class="btn">🔊 Sound: On</button>
+          <button id="btnRestart" class="btn hidden md:block">Restart</button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-4 gap-2 md:gap-3 items-stretch">
+        <div class="panel">
+          <div class="label">Level</div>
+          <div class="value"><span id="uiLevel">1</span></div>
+        </div>
+        <div class="panel">
+          <div class="label">Moves</div>
+          <div class="value"><span id="uiMoves">30</span></div>
+        </div>
+        <div class="panel">
+          <div class="label">Goal</div>
+          <div id="uiGoal" class="text-[10px] mt-1 text-blue-400 font-bold uppercase tracking-wider">Score</div>
+          <div class="value"><span id="uiTarget">5000</span></div>
+        </div>
+        <div class="panel">
+          <div class="label">Score</div>
+          <div class="value"><span id="uiScore">0</span></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="mt-3 md:mt-6 grid gap-3 md:gap-6 md:grid-cols-[1fr_300px]">
+      <section class="card">
+        <div class="relative">
+          <canvas id="game" class="w-full h-auto block"></canvas>
+          <div id="overlay" class="overlay hidden">
+            <div class="overlay-card">
+              <div id="overlayTitle" class="text-2xl font-black"></div>
+              <div id="overlayMsg" class="mt-1 text-white/80"></div>
+              <div class="mt-4 flex gap-2 justify-center">
+                <button id="btnNext" class="btn btn-primary hidden">Next Level</button>
+                <button id="btnRetry" class="btn">Play Again</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-3 flex items-center justify-between text-xs md:text-sm text-white/70">
+          <div>Drag (PC) or swipe (mobile) to swap adjacent candies.</div>
+          <div class="tabular-nums">Score: <span id="uiScore" class="text-white font-semibold">0</span></div>
+        </div>
+      </section>
+
+      <aside class="flex flex-col gap-4">
+        <section class="card p-4">
+          <div class="text-sm font-semibold border-b border-white/10 pb-2 mb-3">Objectives</div>
+          <div id="goalList" class="space-y-3 text-xs">
+            <!-- Goal items injected here -->
+          </div>
+        </section>
+
+        <section class="card p-4">
+          <div class="text-sm font-semibold border-b border-white/10 pb-2 mb-3">Boosters</div>
+          <div class="grid grid-cols-3 gap-2">
+            <button id="boostHammer" class="btn text-[10px] flex flex-col items-center gap-1">🔨<span>Hammer</span></button>
+            <button id="boostShuffle" class="btn text-[10px] flex flex-col items-center gap-1">🔀<span>Shuffle</span></button>
+            <button id="boostSwap" class="btn text-[10px] flex flex-col items-center gap-1">↔️<span>Free Swap</span></button>
+          </div>
+        </section>
+
+        <section class="card p-4">
+          <div class="text-sm font-semibold border-b border-white/10 pb-2 mb-3">Special Combos</div>
+          <ul class="text-[11px] text-white/70 space-y-2">
+            <li><b class="text-blue-400">Bomb + Striped:</b> All matching colors turn striped and blast.</li>
+            <li><b class="text-orange-400">Bomb + Wrapped:</b> Two waves of clearing.</li>
+            <li><b class="text-purple-400">Wrapped + Wrapped:</b> Massive 5x5 explosion.</li>
+            <li><b class="text-green-400">Striped + Striped:</b> Cross clear (row + col).</li>
+          </ul>
+        </section>
+      </aside>
+    </main>
+
+    <footer class="mt-4 md:mt-6 text-center text-xs text-white/50">
+      Built with HTML5 Canvas + Vanilla JS.
+    </footer>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
